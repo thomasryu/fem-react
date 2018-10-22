@@ -1,5 +1,6 @@
 {
-  "tabWidth": 4,
-  "singleQuote": true,
-  "requireConfig": true
+    "tabWidth": 4,
+    "singleQuote": true,
+    "requireConfig": true,
+    "printWidth": 120
 }
