@@ -1,32 +1,9 @@
 import React from 'react';
-
-/* 
-// Function component
-const Pet = props => {
-
-    // no JSX
-    return React.createElement('div', {}, [
-        React.createElement('h1', {}, props.name),
-        React.createElement('h2', {}, props.animal),
-        React.createElement('h2', {}, props.breed)
-    ]);
-
-    // with JSX
-    return (
-        <div>
-            <h1>{props.name}</h1>
-            <h2>{props.animal}</h2>
-            <h2>{props.breed}</h2>
-        </div>
-    ); // parenthesis allows us to continue the code in the following line(s)
-};
-*/
+import { Link } from '@reach/router';
 
 class Pet extends React.Component {
     render() {
-        // Destructuring, basically the paremeters required from
-        // the parent for this component to work
-        const { name, animal, breed, media, location } = this.props;
+        const { name, animal, breed, media, location, id } = this.props;
 
         let photos = [];
         if (media && media.photos && media.photos.photo) {
@@ -35,8 +12,13 @@ class Pet extends React.Component {
             );
         }
 
+        /*
+            A Reach Route link
+            The 'to' attribute defines the route which clicking the the element
+            will redirect the user to (again, 'id' is obtained from props, the pet's)
+        */
         return (
-            <div className="pet">
+            <Link to={`/details/${id}`} className="pet">
                 <div className="image-container">
                     <img alt={'photo of' + name} src={photos[0].value} />
                 </div>
@@ -46,7 +28,7 @@ class Pet extends React.Component {
                         {animal} - {breed} - {location}
                     </h2>
                 </div>
-            </div>
+            </Link>
         );
     }
 }
